@@ -8,4 +8,15 @@ var movieSchema = new Schema({
   genre: String
 });
 
-module.exports = mongoose.model('Movie', movieSchema);
+var movie = mongoose.model('Movie', movieSchema);
+
+movie.getByYear = function(year, done){
+  movie.find({'releaseYear': year}, function(err, movies){
+    if (err) {
+      return res.send(err);
+    }
+    done(movies);
+  });
+};
+
+module.exports = movie;

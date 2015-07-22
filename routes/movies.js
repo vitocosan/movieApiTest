@@ -28,6 +28,12 @@ router.route('/movies').get(function(req, res) {
   });
 });
 
+router.route('/movies/:year').get(function(req, res) {
+  var year = req.params.year;
+  var mov = new MovieBus();
+  mov.getMovie(res,year);
+});
+
 
 router.route('/movies').post(function(req, res) {
   var movie = new Movie(req.body);

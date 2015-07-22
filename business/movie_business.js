@@ -60,6 +60,11 @@ var MovieBusiness = (function () {
             }
             res.send({ message: 'Movie Added' });
           });
+        },
+        getMovie: function(res, year){
+            Movie.getByYear(year, function(movies){
+                res.json(movies);
+            });
         }
     };
 
